@@ -22,6 +22,12 @@ public class TaskController {
     public List<TaskDto> getTasks() {
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
+
+    /*@RequestMapping(method = RequestMethod.GET,value ="getTask" )
+    public TaskDto getTask(Long taskId) {
+        return taskMapper.mapToTask(service.getTask());
+    }*/
+    /*
     @RequestMapping(method = RequestMethod.GET,value ="getTask" )
     public TaskDto getTask(Long taskId) {
         return new TaskDto(1L, "test title", "test contenet");
@@ -35,5 +41,5 @@ public class TaskController {
     }
     @RequestMapping(method = RequestMethod.POST,value ="createTask" )
     public void createTask(TaskDto taskDto) {
-    }
+    }*/
 }
