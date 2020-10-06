@@ -23,10 +23,10 @@ public class TaskController {
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
 
-    /*@RequestMapping(method = RequestMethod.GET,value ="getTask" )
+    @RequestMapping(method = RequestMethod.GET,value ="getTask" )
     public TaskDto getTask(Long taskId) {
-        return taskMapper.mapToTask(service.getTask());
-    }*/
+        return taskMapper.mapToTaskDto(service.getTask(taskId));
+    }
     /*
     @RequestMapping(method = RequestMethod.GET,value ="getTask" )
     public TaskDto getTask(Long taskId) {
