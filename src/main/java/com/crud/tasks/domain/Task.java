@@ -13,12 +13,12 @@ import javax.persistence.*;
 @Entity(name = "tasks")
 public class Task {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
     private String title;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String content;
 }
