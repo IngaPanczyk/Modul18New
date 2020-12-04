@@ -16,7 +16,7 @@ public class UrlCreator {
     @Value("ingapanczyk")
     private  String trelloUsername;
 
-    public URI createUrl() {
+    URI createUrl() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/" + trelloUsername + "/boards")
                 .queryParam("key", trelloAppKey)
                 .queryParam("token", trelloAppToken)
