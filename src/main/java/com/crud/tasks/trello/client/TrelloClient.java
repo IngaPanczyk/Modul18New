@@ -21,7 +21,6 @@ public class TrelloClient {
     @Autowired
     private UrlCreator creator;
 
-
     public List<TrelloBoardDto> getTrelloBoards() {
 
         try {
