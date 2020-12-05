@@ -1,5 +1,6 @@
 package com.crud.tasks.trello.client;
 
+import com.crud.tasks.trello.client.cart.Badges;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -17,4 +18,6 @@ public class CreatedTrelloCard {
     private String name;
     @JsonProperty("shortUrl")
     private String shortUrl;
+    @JsonProperty("badges")
+    private Badges badges;
 }

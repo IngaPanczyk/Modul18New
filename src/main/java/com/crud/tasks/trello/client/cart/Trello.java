@@ -1,4 +1,4 @@
-package com.crud.tasks.trello.client;
+package com.crud.tasks.trello.client.cart;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
