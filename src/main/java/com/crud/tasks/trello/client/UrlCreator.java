@@ -1,4 +1,6 @@
 package com.crud.tasks.trello.client;
+import com.crud.tasks.domain.TrelloCardDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -15,8 +17,10 @@ public class UrlCreator {
     private String trelloAppToken;
     @Value("ingapanczyk")
     private  String trelloUsername;
+    @Autowired
+    TrelloCardDto trelloCardDto;
 
-    URI createUrl() {
+    URI createUrlGetAllLIsts() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/" + trelloUsername + "/boards")
                 .queryParam("key", trelloAppKey)
                 .queryParam("token", trelloAppToken)
@@ -24,4 +28,14 @@ public class UrlCreator {
                 .queryParam("lists", "all").build().encode().toUri();
         return url;
     }
+   /* URI createUrlAddNewCart() {
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/cards")
+                .queryParam("key", trelloAppKey)
+                .queryParam("token", trelloAppToken)
+                .queryParam("name",trelloCardDto.getName())
+                .queryParam("desc",trelloCardDto.getDescription())
+                .queryParam("pos",trelloCardDto.getPos())
+                .queryParam("idList",trelloCardDto.getListId()).build().encode().toUri();
+        return url;
+    }*/
 }
