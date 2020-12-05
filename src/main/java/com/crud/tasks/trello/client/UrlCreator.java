@@ -1,5 +1,7 @@
 package com.crud.tasks.trello.client;
+
 import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.trello.config.TrelloConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,9 +18,10 @@ public class UrlCreator {
     @Value("${trello.app.token}")
     private String trelloAppToken;
     @Value("ingapanczyk")
-    private  String trelloUsername;
+    private String trelloUsername;
     @Autowired
     TrelloCardDto trelloCardDto;
+
 
     URI createUrlGetAllLIsts() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/" + trelloUsername + "/boards")
