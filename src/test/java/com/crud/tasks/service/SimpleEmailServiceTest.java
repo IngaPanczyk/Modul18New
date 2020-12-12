@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class SimpleEmailServiceTest1 {
+public class SimpleEmailServiceTest {
     @InjectMocks
     private SimpleEmailService simpleEmailService;
 
@@ -23,11 +23,12 @@ public class SimpleEmailServiceTest1 {
     @Test
     public void shouldSendEmail(){
         //Given
-        Mail mail = new Mail("test@test.com", "Test", "Test message");
+        Mail mail = new Mail("test@test.com", "Test", "Test message",null);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mail.getMailTo());
-        mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mail.getMessage());
+            mailMessage.setTo(mail.getMailTo());
+            mailMessage.setSubject(mail.getSubject());
+            mailMessage.setText(mail.getMessage());
+            mailMessage.setCc(mail.getToCc());
         //When
         simpleEmailService.send(mail);
         //Then
