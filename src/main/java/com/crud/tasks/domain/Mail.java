@@ -16,4 +16,5 @@ public class Mail {
         this.subject = subject;
         this.message = message;
     }
+
 }
