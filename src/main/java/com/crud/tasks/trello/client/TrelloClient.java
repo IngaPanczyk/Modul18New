@@ -6,7 +6,6 @@ import com.crud.tasks.trello.config.TrelloConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -50,7 +49,7 @@ public class TrelloClient {
 
     }
 
-    public CreatedTrelloCard creteNewCard(TrelloCardDto trelloCardDto) {
+    public CreatedTrelloCardDto creteNewCard(TrelloCardDto trelloCardDto) {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/cards")
                 .queryParam("key", trelloConfig.getTrelloAppKey())
                 .queryParam("token", trelloConfig.getTrelloAppToken())
@@ -59,6 +58,6 @@ public class TrelloClient {
                 .queryParam("pos", trelloCardDto.getPos())
                 .queryParam("idList", trelloCardDto.getListId()).build().encode().toUri();
 
-        return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
+        return restTemplate.postForObject(url, null, CreatedTrelloCardDto.class);
     }
 }
