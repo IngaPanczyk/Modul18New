@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Component
@@ -33,7 +32,7 @@ public class TrelloFacade {
     public List<TrelloBoardDto> fetchTrelloBoards() {
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoards(trelloService.fetchTrelloBoards());
         List<TrelloBoard> filtredBoards = trelloValidator.validateTrelloBoards(trelloBoards);
-        return trelloMapper.mapToBoardsDTO(filtredBoards);
+        return trelloMapper.mapToBoardsDto(filtredBoards);
     }
     public CreatedTrelloCardDto createCard(final TrelloCardDto trelloCardDto){
         TrelloCard trelloCard = trelloMapper.mapToTrelloCard(trelloCardDto);
