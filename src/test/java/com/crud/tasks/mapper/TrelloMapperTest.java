@@ -28,7 +28,7 @@ public class TrelloMapperTest {
         List<TrelloListDto> trelloListDtoLists = new ArrayList<>();
         trelloListDtoLists.add(trelloListDto1);
 
-        TrelloBoardDto trelloBoardDto1 = new TrelloBoardDto("Test Name", "1", trelloListDtoLists);
+        TrelloBoardDto trelloBoardDto1 = new TrelloBoardDto("1", "Test Name", trelloListDtoLists);
         List<TrelloBoardDto> trelloBoardDtos = new ArrayList<>();
         trelloBoardDtos.add(trelloBoardDto1);
 
@@ -52,7 +52,7 @@ public class TrelloMapperTest {
         List<TrelloList> trelloListLists = new ArrayList<>();
         trelloListLists.add(trelloList1);
 
-        TrelloBoard trelloBoard1 = new TrelloBoard("Test Name", "1", trelloListLists);
+        TrelloBoard trelloBoard1 = new TrelloBoard("1", "Test Name", trelloListLists);
         List<TrelloBoard> trelloBoards = new ArrayList<>();
         trelloBoards.add(trelloBoard1);
 
