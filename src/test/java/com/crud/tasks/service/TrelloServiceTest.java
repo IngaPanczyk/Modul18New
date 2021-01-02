@@ -30,6 +30,9 @@ public class TrelloServiceTest {
     @Mock
     private AdminConfig adminConfig;
 
+    @Mock
+    private SimpleEmailService emailService;
+
     @Test
     public void testFetchTrelloBoards() {
         //Given
@@ -50,15 +53,15 @@ public class TrelloServiceTest {
         //Given
         TrelloCardDto trelloCardDto = new TrelloCardDto("Cart1", "Test description", "Test pos", "TestListId");
         CreatedTrelloCardDto newCard = new CreatedTrelloCardDto("Test id", "Test name", "Test url");
-        //Mail mail = new Mail("Test", "Test", "Test");
-        //when(trelloClient.creteNewCard(trelloCardDto)).thenReturn(newCard);
-        //when(adminConfig.getAdminMail()).thenReturn("test email");
+        Mail mail = new Mail("Test", "Test", "Test");
+        when(trelloClient.creteNewCard(trelloCardDto)).thenReturn(newCard);
+        when(adminConfig.getAdminMail()).thenReturn("test email");
 
         //When
-        //CreatedTrelloCardDto createdTrelloCardDto = trelloService.createTrelloCard(trelloCardDto);
-        //System.out.println(createdTrelloCardDto);
+        CreatedTrelloCardDto createdTrelloCardDto = trelloService.createTrelloCard(trelloCardDto);
+
 
         //Then
-        //Assert.assertEquals(trelloCardDto, createdTrelloCardDto);
+        Assert.assertEquals(newCard, createdTrelloCardDto);
     }
 }

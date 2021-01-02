@@ -22,16 +22,17 @@ public class SimpleEmailService {
             javaMailSender.send(mailMessage);
             LOGGER.info("Email has been send!");
         } catch (MailException e) {
-            LOGGER.error("Failed to process email sending: ", e.getMessage(),e);
+            LOGGER.error("Failed to process email sending: ", e.getMessage(), e);
         }
     }
-    private SimpleMailMessage createMailMessage(final Mail mail){
+
+    private SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if(mail.getToCc()!=null)
-        mailMessage.setCc(mail.getToCc());
+        if (mail.getToCc() != null && !mail.getToCc().isEmpty())
+            mailMessage.setCc(mail.getToCc());
         return mailMessage;
     }
 }

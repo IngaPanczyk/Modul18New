@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -51,6 +53,7 @@ public class DbServceTest {
         //Then
         Assert.assertEquals(task, savedTask);
     }
+
     @Test
     public void testGetTask() {
         //Given
@@ -64,17 +67,17 @@ public class DbServceTest {
         //Then
         Assert.assertTrue(savedTask.isPresent());
     }
+
     @Test
     public void testDeleteTask() {
         //Given
         Task task = new Task(1L, "Test title", "Test description");
-        //Jak zrobić mocka dla metody która jest void
 
         //When
-
+        dbService.deleteTask(1L);
 
         //Then
-
+        Mockito.verify(repository).deleteById(any());
     }
 
 }
