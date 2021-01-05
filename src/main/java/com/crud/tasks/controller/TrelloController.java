@@ -6,6 +6,7 @@ import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.client.CreatedTrelloCardDto;
 import com.crud.tasks.trello.facade.TrelloFacade;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,36 +17,13 @@ import java.util.List;
 @CrossOrigin("*")
 public class TrelloController {
 
-    //@Autowired
-    //private TrelloService trelloService;
-
     @Autowired
     private TrelloFacade trelloFacade;
-
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
         return trelloFacade.fetchTrelloBoards();
     }
-
-        /*List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-
-        trelloBoards.forEach(trelloBoardDto -> {
-
-            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
-
-            System.out.println("This board contains lists: ");
-
-            trelloBoardDto.getLists().forEach(trelloList ->
-                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
-        });*/
-
-          /* List<TrelloBoardDto> trelloBoards1 = trelloClient.getTrelloBoards();
-
-        trelloBoards1.stream()
-                .filter(trelloBoardDto -> trelloBoardDto.getName().contains("Kodilla") & trelloBoardDto.getId() != null)
-                .forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()))*/
-        ;
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
