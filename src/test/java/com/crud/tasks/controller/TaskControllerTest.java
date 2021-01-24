@@ -100,10 +100,9 @@ class TaskControllerTest {
                 .andExpect(jsonPath("title", is("Test title")))
                 .andExpect(jsonPath("content", is("Test content")));
     }
-/*
+
     @Test
     public void shouldCreateTask() throws Exception {
-       // TaskDto taskDto = new TaskDto(1L, "Test title", "Test content");
 
         Task createdTask = new Task(1L, "Test title", "Test content");
 
@@ -119,11 +118,9 @@ class TaskControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
-                //.andExpect(status().isCreated())
-                .andExpect(jsonPath("$.createdTask.id", is(1)))
-                .andExpect(jsonPath("$.createdTask.title", is("Test title")))
-                .andExpect(jsonPath("$.createdTas.content", is("Test content")));
+                .andExpect(status().isOk());
     }
+
 
     @Test
     public void updateTask() throws Exception {
@@ -137,32 +134,27 @@ class TaskControllerTest {
         when(taskMapper.mapToTaskDto(any())).thenReturn(taskDto);
 
         Gson gson = new Gson();
-        String jsonContent = gson.toJson(taskDto);
+        String jsonContent = gson.toJson(task);
 
         //When&Then
-        mockMvc.perform(put("/v1/task/updateTask" + task.getId())
+        mockMvc.perform(put("/v1/task/updateTask")
                 .param("title", "Updated test title")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.title", is("Updated test title")))
-                .andExpect(jsonPath("$.content", is("Test content")));
+                .andExpect(status().isOk());
     }
 
     @Test
     public void deleteTask() throws Exception {
 
-        Task task = new Task(1L, "Test title", "Test content");
-
-        taskRepository.save(task);
-        Mockito.verify(dbService).deleteTask(task.getId());
-
-        //When&Then
-        mockMvc.perform(MockMvcRequestBuilders.delete("/v1/task/deleteTask/1")
-                //.param("id", String.valueOf(id))
+        //When
+        mockMvc.perform(MockMvcRequestBuilders.delete("/v1/task/deleteTask?taskId=1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }*/
+        //Then
+        Mockito.verify(dbService).deleteTask(1L);
+    }
+
 
 }
